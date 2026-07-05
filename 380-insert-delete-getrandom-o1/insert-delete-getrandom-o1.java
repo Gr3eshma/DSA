@@ -4,18 +4,17 @@ class RandomizedSet {
 
     HashMap<Integer, Integer> map;
     ArrayList<Integer> list;
-    Random random;
+    Random rand;
 
     public RandomizedSet() {
         map = new HashMap<>();
         list = new ArrayList<>();
-        random = new Random();
+        rand = new Random();
     }
 
     public boolean insert(int val) {
-        if (map.containsKey(val)) {
+        if (map.containsKey(val))
             return false;
-        }
 
         list.add(val);
         map.put(val, list.size() - 1);
@@ -23,18 +22,17 @@ class RandomizedSet {
     }
 
     public boolean remove(int val) {
-        if (!map.containsKey(val)) {
+        if (!map.containsKey(val))
             return false;
-        }
 
         int index = map.get(val);
-        int lastElement = list.get(list.size() - 1);
+        int last = list.get(list.size() - 1);
 
-        // Move the last element to the removed element's position
-        list.set(index, lastElement);
-        map.put(lastElement, index);
+        // Move last element to removed element's position
+        list.set(index, last);
+        map.put(last, index);
 
-        // Remove the last element
+        // Remove last element
         list.remove(list.size() - 1);
         map.remove(val);
 
@@ -42,7 +40,7 @@ class RandomizedSet {
     }
 
     public int getRandom() {
-        int index = random.nextInt(list.size());
+        int index = rand.nextInt(list.size());
         return list.get(index);
     }
 }
