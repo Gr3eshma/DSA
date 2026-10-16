@@ -5,14 +5,15 @@ class Solution {
             return false;
         }
         char[] chars1=s.toCharArray();
-        Arrays.sort(chars1);
         char[] chars2=t.toCharArray();
+        Arrays.sort(chars1);
         Arrays.sort(chars2);
-        int result = Arrays.compare(chars1, chars2); 
-        if(result==0){
-            return true;
+        //int result = Arrays.compare(chars1, chars2);
+        for(i=0;i<s.length();i++){
+            if(chars1[i]!=chars2[i]){
+                return false;
+            }
         }
-
-        return false;
+        return true;
     }
 }
